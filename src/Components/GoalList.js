@@ -8,7 +8,7 @@ function GoalList({ goals }) {
         <h3>Learning Goals</h3>
         <ul>
           {goals.Learning.map((goal, index) => (
-            <li key={index}>{goal}</li>
+            <li key={index}>{goal.text}</li>
           ))}
         </ul>
       </LearningBox>
@@ -17,7 +17,7 @@ function GoalList({ goals }) {
         <h3>Health Goals</h3>
         <ul>
           {goals.Health.map((goal, index) => (
-            <li key={index}>{goal}</li>
+            <li key={index}>{goal.text}</li>
           ))}
         </ul>
       </HealthBox>
@@ -26,7 +26,7 @@ function GoalList({ goals }) {
         <h3>Money Goals</h3>
         <ul>
           {goals.Money.map((goal, index) => (
-            <li key={index}>{goal}</li>
+            <li key={index}>{goal.text}</li>
           ))}
         </ul>
       </MoneyBox>
