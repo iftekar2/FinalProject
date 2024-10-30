@@ -1,6 +1,7 @@
 import React from "react";
 import "./Home.css";
 import GoalTimeLine from "./GoalTimeLine";
+import Inputs from "./Inputs";
 
 function Home() {
   return (
@@ -10,6 +11,7 @@ function Home() {
           <h2>Today's Goals</h2>
         </div>
         <GoalTimeLine />
+        <Inputs />
       </div>
     </div>
   );
