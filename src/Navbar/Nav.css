@@ -1,0 +1,14 @@
+.NavClass {
+  padding-top: 20px;
+}
+
+.navBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+h3 {
+  margin-top: 0;
+}
