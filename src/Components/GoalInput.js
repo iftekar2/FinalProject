@@ -1,25 +1,42 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-export default function Inputs() {
-  const [selectedOption, setSelectedOption] = useState("Learning");
+export default function Inputs({ addGoal }) {
+  const [goalText, setGoalText] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("Learning");
 
-  const handleChange = (e) => {
-    setSelectedOption(e.target.value);
+  const handleTextChange = (e) => {
+    setGoalText(e.target.value);
+  };
+
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
+  };
+
+  const handleAddGoal = () => {
+    if (goalText.trim()) {
+      addGoal(goalText, selectedCategory);
+      setGoalText("");
+    }
   };
 
   return (
     <div>
       <InputFeilds>
         <SearchBar>
-          <input placeholder="Add a new goal..."></input>
+          <input
+            type="text"
+            placeholder="Add a new goal..."
+            value={goalText}
+            onChange={handleTextChange}
+          />
         </SearchBar>
 
         <SelectOptions>
           <select
             id="activity-dropdown"
-            value={selectedOption}
-            onChange={handleChange}
+            value={selectedCategory}
+            onChange={handleCategoryChange}
           >
             <option value="Learning">Learning</option>
             <option value="Health">Health</option>
@@ -28,7 +45,7 @@ export default function Inputs() {
         </SelectOptions>
 
         <AddButton>
-          <button>Add a goal</button>
+          <button onClick={handleAddGoal}>Add a goal</button>
         </AddButton>
       </InputFeilds>
     </div>
@@ -70,13 +87,11 @@ const SelectOptions = styled.div`
 const AddButton = styled.div`
   button {
     height: 40px;
-    width: 100px;
+    width: 120px;
     border: none;
     border-radius: 7px;
     background-color: #8cd3c5;
-    font-size: 16px;
-    font-weight: 550;
+    font-size: 18px;
+    font-weight: 500;
   }
 `;
-
-//How are polimorphesum and inhaterence connected to OOP.
