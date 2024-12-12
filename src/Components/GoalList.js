@@ -78,6 +78,7 @@ const GoalBox = styled.div`
   padding: 20px;
   border-radius: 10px;
   font-size: 20px;
+  background-color: #dbadad;
 `;
 
 const LearningBox = styled(GoalBox)`
