@@ -15,6 +15,7 @@ function GoalList({ goals, onComplete, onDelete }) {
                 onChange={() => onComplete("Learning", index)}
               />
               <GoalText completed={goal.completed}>{goal.text}</GoalText>
+              <PointsTag>{goal.points} pts</PointsTag>
               <button onClick={() => onDelete("Learning", index)}>
                 Delete
               </button>
@@ -34,6 +35,7 @@ function GoalList({ goals, onComplete, onDelete }) {
                 onChange={() => onComplete("Health", index)}
               />
               <GoalText completed={goal.completed}>{goal.text}</GoalText>
+              <PointsTag>{goal.points} pts</PointsTag>
               <button onClick={() => onDelete("Health", index)}>Delete</button>
             </GoalItem>
           ))}
@@ -51,6 +53,7 @@ function GoalList({ goals, onComplete, onDelete }) {
                 onChange={() => onComplete("Money", index)}
               />
               <GoalText completed={goal.completed}>{goal.text}</GoalText>
+              <PointsTag>{goal.points} pts</PointsTag>
               <button onClick={() => onDelete("Money", index)}>Delete</button>
             </GoalItem>
           ))}
@@ -81,7 +84,6 @@ const LearningBox = styled(GoalBox)`
   ul {
     padding: 0;
   }
-
   button {
     height: 40px;
     width: 80px;
@@ -93,11 +95,11 @@ const LearningBox = styled(GoalBox)`
     border-radius: 5px;
   }
 `;
+
 const HealthBox = styled(GoalBox)`
   ul {
     padding: 0;
   }
-
   button {
     height: 40px;
     width: 80px;
@@ -109,11 +111,11 @@ const HealthBox = styled(GoalBox)`
     border-radius: 5px;
   }
 `;
+
 const MoneyBox = styled(GoalBox)`
   ul {
     padding: 0;
   }
-
   button {
     height: 40px;
     width: 80px;
@@ -130,12 +132,20 @@ const GoalItem = styled.li`
   display: flex;
   align-items: center;
   gap: 10px;
-  text-decoration: ${(props) => (props.completed ? "line-through" : "none")};
-  color: ${(props) => (props.completed ? "#aaa" : "black")};
+  margin-bottom: 10px;
 `;
 
 const GoalText = styled.span`
   text-decoration: ${(props) => (props.completed ? "line-through" : "none")};
+  margin: 0 10px;
+`;
+
+const PointsTag = styled.span`
+  background-color: #8cd3c5;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.9em;
   margin: 0 10px;
 `;
 

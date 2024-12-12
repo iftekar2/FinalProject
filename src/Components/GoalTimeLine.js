@@ -1,31 +1,44 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-function GoalTimeLine() {
-  const [isClicked, setIsClicked] = useState(false);
+function GoalTimeLine({ onTimeframeChange }) {
+  const [activeTimeframe, setActiveTimeframe] = useState("today");
 
-  const handleClick = () => {
-    setIsClicked(!isClicked);
+  const handleTimeframeClick = (timeframe) => {
+    setActiveTimeframe(timeframe);
+    onTimeframeChange(timeframe);
   };
 
   return (
     <div>
       <TimeLine>
-        <Today onClick={handleClick} clicked={isClicked}>
+        <TimeframeButton
+          active={activeTimeframe === "today"}
+          onClick={() => handleTimeframeClick("today")}
+        >
           <p>Today's Goals</p>
-        </Today>
+        </TimeframeButton>
 
-        <Week>
+        <TimeframeButton
+          active={activeTimeframe === "week"}
+          onClick={() => handleTimeframeClick("week")}
+        >
           <p>Weekly Goals</p>
-        </Week>
+        </TimeframeButton>
 
-        <Month>
-          <p>Weekly Goals</p>
-        </Month>
+        <TimeframeButton
+          active={activeTimeframe === "month"}
+          onClick={() => handleTimeframeClick("month")}
+        >
+          <p>Monthly Goals</p>
+        </TimeframeButton>
 
-        <Year>
+        <TimeframeButton
+          active={activeTimeframe === "year"}
+          onClick={() => handleTimeframeClick("year")}
+        >
           <p>Yearly Goals</p>
-        </Year>
+        </TimeframeButton>
       </TimeLine>
     </div>
   );
@@ -40,43 +53,20 @@ const TimeLine = styled.div`
   font-weight: 600;
 `;
 
-const Today = styled.div`
-  background-color: ${({ clicked }) => (clicked ? "black" : "white")};
-  color: ${({ clicked }) => (clicked ? "white" : "black")};
+const TimeframeButton = styled.div`
+  background-color: ${({ active }) => (active ? "black" : "white")};
+  color: ${({ active }) => (active ? "white" : "black")};
   width: 140px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
   cursor: pointer;
-`;
-const Week = styled.div`
-  background-color: ${({ clicked }) => (clicked ? "black" : "white")};
-  color: ${({ clicked }) => (clicked ? "white" : "black")};
-  width: 140px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  cursor: pointer;
-`;
-const Month = styled.div`
-  background-color: ${({ clicked }) => (clicked ? "black" : "white")};
-  color: ${({ clicked }) => (clicked ? "black" : "white")};
-  background-color: black;
-  width: 140px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-`;
-const Year = styled.div`
-  background-color: black;
-  width: 140px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: ${({ active }) => (!active ? "#f0f0f0" : "black")};
+  }
 `;
 
 export default GoalTimeLine;
